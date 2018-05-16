@@ -1,0 +1,48 @@
+*{
+	box-sizing: border-box;
+	margin: auto;
+}
+
+#contenedor{
+	width: 800px;
+	height: 600px;
+	background: gray;
+	border: #999 1px solid;
+	display: flex;
+	flex-direction: row;
+	padding: 20px;
+	margin: 0 auto;
+
+}
+
+
+#fichas{
+	width: 500px;
+	padding: 20px;
+	margin: 20px;
+}
+
+/*
+.cards{
+	width: 82px;
+	height: 82px;
+	background: black;
+	margin: 10px;
+	float: left;
+	padding: 30px;
+	font-size: 35px;
+	color: white;
+	cursor: pointer;
+	text-align: center;
+	padding: 10px;
+}
+*/
+
+#instrucciones{
+	width: 300px;
+	height: 400px;
+	background: pink;
+	padding: 20px;
+	margin: 20px;
+
+}
