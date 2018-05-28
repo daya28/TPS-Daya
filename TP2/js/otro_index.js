@@ -15,13 +15,13 @@ window.addEventListener("load", function() {
 
 var tarjetas = [//hacemos un array con las imagenes de las tarjetas
 
-	'img/Ficha1.jpg',
+	{'img/Ficha1.jpg',
 	'img/Ficha2.jpg',
 	'img/Ficha3.jpg',
 	'img/Ficha4.jpg',
 	'img/Ficha5.jpg',
 	'img/Ficha6.jpg',
-	'img/Ficha7.jpg',
+	'img/Ficha7.jpg'}
 ]
 
 /* =========== Donde se ubican las imagenes ============ */
@@ -48,11 +48,6 @@ var tarjetas = [//hacemos un array con las imagenes de las tarjetas
         }
     }
     todasTarjetas = shuffle(todasTarjetas); //Desordenamos la lista
-
-
-
-
-
 
 
 /* ============MOSTRAR LAS CARDS====== */
