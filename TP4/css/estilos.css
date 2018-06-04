@@ -1,0 +1,39 @@
+*{
+	box-sizing: border-box;
+	margin: 0 auto;
+	font-family: "roboto";
+	padding: 10px;
+}
+
+.contenedor{
+	width: 90%;
+	height: auto;
+	background: gray;
+	display: flex;
+
+}
+
+p{
+	text-align: center;
+	align-content: center;
+}
+
+input{
+	margin: 20px;	
+}
+
+select{
+	width: 250px;	
+	display: flex;
+	justify-content: center;
+}
+
+.top, .abajo{
+	display: flex;
+}
+
+article{
+	height: 20%;
+	background: white;
+	border: black 1px solid;
+}

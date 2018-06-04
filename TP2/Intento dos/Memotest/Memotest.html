@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Memo Daya</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<link rel="stylesheet" href="css/estilos.css">
+	<link href="https://fonts.googleapis.com/css?family=Rubik" rel="stylesheet">
+	
+</head>
+<body>
+
+	<div class="container">
+		<div class="instrucciones">
+			<h1>Memotest</h1>
+			<p>A continuación se mostrarán una serie de fichas las cuales debes darle click hasta conseguir el par.<br/>
+			Tienes hasta 24 intentos para ganar!<br/>
+			Buena Suerte!!!</p>
+
+			<button type="button" id="jugar" onclick='jugar()'>Jugar</button>
+
+			<table id="fichas">
+
+				<section class="fila1">
+					<img src="img/Fichas-13.jpg" id="01" onclick='imgcheck(this)'/></img>
+					<img src="img/Fichas-13.jpg" id="02" onclick='imgcheck(this)'/></img>
+					<img src="img/Fichas-13.jpg" id="03" onclick='imgcheck(this)'/></img>
+				</section>
+				<section class="fila fila2">
+					<img src="img/Fichas-13.jpg" id="04" onclick='imgcheck(this)'/></img>
+					<img src="img/Fichas-13.jpg" id="05" onclick='imgcheck(this)'/></img>
+					<img src="img/Fichas-13.jpg" id="06" onclick='imgcheck(this)'/></img>
+				</section>
+				<section class="fila fila3">
+					<img src="img/Fichas-13.jpg" id="07" onclick='imgcheck(this)'/></img>
+					<img src="img/Fichas-13.jpg" id="08" onclick='imgcheck(this)'/></img>
+					<img src="img/Fichas-13.jpg" id="09" onclick='imgcheck(this)'/></img>
+				</section>
+				<section class="fila fila4">
+					<img src="img/Fichas-13.jpg" id="10" onclick='imgcheck(this)'/></img>
+					<img src="img/Fichas-13.jpg" id="11" onclick='imgcheck(this)'/></img>
+					<img src="img/Fichas-13.jpg" id="12" onclick='imgcheck(this)'/></img>
+				</section>
+
+			</table>
+
+			<div id="anotador">
+				<div id="jugador1">Jugador 1: <span id="j1">0</span></div>
+				<div id="jugador2">Jugador 2: <span id="j2">0</span></div>
+			</div>	
+		
+				
+
+		</div>
+
+	</div>
+	
+
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/Index.js"></script>
+</body>
+</html>
+
+<!-- 
+<section class="fila1">
+							<img src="img/Fichas-01.jpg"></img>
+							<img src="img/Fichas-02.jpg"></img>
+							<img src="img/Fichas-03.jpg"></img>
+						</section>
+						<section class="fila fila2">
+							<img src="img/Fichas-04.jpg"></img>
+							<img src="img/Fichas-05.jpg"></img>
+							<img src="img/Fichas-06.jpg"></img>
+						</section>
+						<section class="fila fila3">
+							<img src="img/Fichas-07.jpg"></img>
+							<img src="img/Fichas-08.jpg"></img>
+							<img src="img/Fichas-09.jpg"></img>
+						</section>
+
+ -->
