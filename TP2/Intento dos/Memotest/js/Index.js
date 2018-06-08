@@ -1,7 +1,7 @@
 /* DECLARO MIS VARIABLES */
 
 var path = "img/";
-var first = true;
+var primera = true;
 var turno = 0;
 var j1 = 0;
 var j2 = 0;
@@ -84,52 +84,69 @@ function jugar(){
 }
 
 function imgcheck(imagen){
-	console.log(imagen);
 	id=imagen.id;
 	imagen.src = arrayImagenes[id].img;
 
 	// Turno del jugador
 
 	jugador = tratarjugador(turno);
-
-	if(first){
+primera
+	if(primera){
 		prim=imagen;
-		first=false;
+		primera=false;
 		pid=prim.id;
 		pid.src=arrayImagenes[id].img;
 		//imagen.id="si";
 	}else{
 		// Verificamos si son iguales
-		if(arrayImagenes[pid].img==arrayImagenes[id].img){ //preguntar si las imagenes son iguales, si no lo son deben voltearse nuevamente
+		if(arrayImagenes[pid].img == arrayImagenes[id].img){ //preguntar si las imagenes son iguales, si no lo son deben voltearse nuevamente
 			total++;
-			if(jugador==1){
+			console.log('total: '+total);  
+			if(jugador == 1){
 				j1=j1+1;
-				document.getElementById("j1").innetHTML = j1;
+				document.getElementById("j1").innerHTML = j1;
 			}else{
 				j2++;
-				document.getElementById("j2").innetHTML = j2;
+				document.getElementById("j2").innerHTML = j2;
 			}
 
-			//Si termina el juego
-			if(total == 12){
-				ganador = finjuego(j1,j2);
-			}
+			// //Si termina el juego
+			// if(turno == 12){
+			// 	ganador = finjuego(j1,j2);
+			// 	console.log('fin');
+			// } Esto aqui no funcionaba porque contamos los turnos mas abajo
+			//
 
 			// elimina el onclick si ya fueron encontrados
 			imagen.onclick="";
 			prim.onclick="";
 		}else{
-			if(prim.id==arrayImagenes[id].img){
-				//if(prim.id=="si"){
+			if(prim.id != arrayImagenes[id].img){
+				//if(prim.id=="si")
 				prim.id=pid;
 				setTimeout(function(){changeimages(imagen)},800);
 				setTimeout(function(){changeimages(prim)}, 800);
+				turno++; //ponemos turno++ aqui para que no cuente con el total
+				console.log('turno: '+turno);
 			}
 
 		}
 
-		first=true;
-		turno++;
+		primera=true;
+		//turno++; //aqui cotaba un intento con todos los click
+		
+
+		// despues de contar los turno pregunto los intentos.
+		//Si termina el juego
+		if(turno == 12){
+			ganador = finjuego(j1,j2);
+			alert('Ohhh! Perdiste!');
+		}
+
+		//Ganar el juego
+		if(total == 6){
+			alert('Siiii ganaste!');
+		}
 
 		//si no hay ganador
 		if(ganador==0){
@@ -140,7 +157,7 @@ function imgcheck(imagen){
 }
 
 var changeimages = function(imagen){
-	imagen.src = path+".jpg";
+	imagen.src = path+"Fichas-13.jpg"; // Esto es lo mismo que decir 'img/Ficha-13.jpg'
 	//imagen.src = path+"Fichas-01.jpg";
 }
 
@@ -156,12 +173,14 @@ function tratarjugador(turno){
 	return jugador;
 }
 
+
+
 function finjuego(j1,j2){
 	var ganador;
-	if(j1==j2){
+	if(j1 == j2){
 		document.getElementById("anotador").innerHTML = "es un empate";
 	}else{
-		if(j1>j2){
+		if(j1 > j2){
 			ganador="1";
 		}else{
 			ganador="2";
@@ -173,4 +192,3 @@ function finjuego(j1,j2){
 }
 
 shuffle(arrayImagenes);
-tratarjugador(turno);
