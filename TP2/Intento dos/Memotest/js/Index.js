@@ -1,7 +1,6 @@
 /* DECLARO MIS VARIABLES */
 
 var path = "img/";
-arrayImagenes = new array(24);
 var first = true;
 var turno = 0;
 var j1 = 0;
@@ -12,6 +11,22 @@ var ganador = 0;
 
 /* CREAMOS EL ARRAY CON EL PATH DE IMAGENES */
 
+var arrayImagenes=[
+	{'iconos':'mouse','img':'img/01.jpg'},
+	{'iconos':'mouse','img':'img/01.jpg'},
+	{'iconos':'mundo','img':'img/02.jpg'},
+	{'iconos':'mundo','img':'img/02.jpg'},
+	{'iconos':'megusta','img':'img/03.jpg'},
+	{'iconos':'megusta','img':'img/03.jpg'},
+	{'iconos':'mail','img':'img/04.jpg'},
+	{'iconos':'mail','img':'img/04.jpg'},
+	{'iconos':'sms','img':'img/05.jpg'},
+	{'iconos':'sms','img':'img/05.jpg'},
+	{'iconos':'nube','img':'img/06.jpg'},
+	{'iconos':'nube','img':'img/06.jpg'},
+]
+
+/*
 function crearImagenes(){
 	for (var i=0; i<=12; i++){
 
@@ -23,12 +38,14 @@ function crearImagenes(){
 		}
 	} 
 
-	shuffle(arrayImagenes);
+	
 }
+*/
 
 /* ALEATORIO */
-
-function shuffle(array){
+/*
+function shuffle(arrayImagenes){
+	for (var i=0; i<=12; i++){
 	var i=array.length;
 	while(i--){
 		var j=Math.floor(Math.random()*(i+1));
@@ -36,22 +53,40 @@ function shuffle(array){
 		array[i]=array[j];
 		array[j]=tmp;
 	}
+	console.log(i)	
 }
+}
+*/
+
+function shuffle(arrayImagenes) {
+	var j, x, i;
+    for (i = arrayImagenes.length - 1; i > 0; i--) {
+        j = Math.floor(Math.random() * (i + 1));
+        x = arrayImagenes[i].img;
+        arrayImagenes[i].img = arrayImagenes[j].img;
+        arrayImagenes[j].img = x;
+    }
+    return arrayImagenes;
+    console.log(arrayImagenes);
+    console.log('hola');
+}
+
+
 
 /* JUGAR */
 
 function jugar(){
-	crearImagenes();
+	//crearImagenes();
 	document.getElementById('fichas').style.display = "block";
 	document.getElementById("jugador1").style.color = "#03BF35";
-	document.getElementById("jugar").style.display="none";
+	//document.getElementById("jugar").style.display="none";
 
 }
 
 function imgcheck(imagen){
+	console.log(imagen);
 	id=imagen.id;
-	imagen.src = arrayImagenes[id];
-
+	imagen.src = arrayImagenes[id].img;
 
 	// Turno del jugador
 
@@ -61,11 +96,11 @@ function imgcheck(imagen){
 		prim=imagen;
 		first=false;
 		pid=prim.id;
-		pid.src=arrayImagenes[id];
-		imagen.id="si";
+		pid.src=arrayImagenes[id].img;
+		//imagen.id="si";
 	}else{
 		// Verificamos si son iguales
-		if(imagen.id!="si" && arrayImagenes[pid]==arrayImagenes[id]){
+		if(arrayImagenes[pid].img==arrayImagenes[id].img){ //preguntar si las imagenes son iguales, si no lo son deben voltearse nuevamente
 			total++;
 			if(jugador==1){
 				j1=j1+1;
@@ -84,7 +119,8 @@ function imgcheck(imagen){
 			imagen.onclick="";
 			prim.onclick="";
 		}else{
-			if(prim.id=="si"){
+			if(prim.id==arrayImagenes[id].img){
+				//if(prim.id=="si"){
 				prim.id=pid;
 				setTimeout(function(){changeimages(imagen)},800);
 				setTimeout(function(){changeimages(prim)}, 800);
@@ -104,7 +140,8 @@ function imgcheck(imagen){
 }
 
 var changeimages = function(imagen){
-	imagen.src = path+"Fichas-01.jpg";
+	imagen.src = path+".jpg";
+	//imagen.src = path+"Fichas-01.jpg";
 }
 
 function tratarjugador(turno){
@@ -134,3 +171,6 @@ function finjuego(j1,j2){
 	document.getElementById("anotador").innerHTML = "ganaste" +ganador;
 	return ganador;
 }
+
+shuffle(arrayImagenes);
+tratarjugador(turno);
