@@ -1,4 +1,4 @@
-/* DECLARO MIS VARIABLES */
+  /* DECLARO MIS VARIABLES */
 
 var path = "img/";
 var primera = true;
