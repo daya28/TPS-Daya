@@ -79,6 +79,7 @@ $('#intentosP').text(/*'intentos disponibles: '*/ +turnos)
 
 
 
+
 // ALEATORIOS
 
 
@@ -124,7 +125,7 @@ primera
 	}else{
 		// Verificamos si son iguales
 		if(arrayImagenes[pid].img == arrayImagenes[id].img){ //preguntar si las imagenes son iguales, si no lo son deben voltearse nuevamente
-			total--;  
+			total++;  
 			console.log('total: '+total);  
 			if(jugador == 1){
 				j1=j1+1;
@@ -150,11 +151,26 @@ primera
 				prim.id=pid;
 				setTimeout(function(){changeimages(imagen)},800);
 				setTimeout(function(){changeimages(prim)}, 800);
-				turnos--; //ponemos turno++ aqui para que no cuente con el total 
+				turnos--; //ponemos turno-- aqui para que no cuente con el total 
 				conteo();
 				console.log('turno: '+turnos);
 			}
+			// despues de contar los turno pregunto los intentos.
 
+		//Si termina el juego
+		// __________________________________________
+
+		if( turnos === 0 ){
+
+			alert("You Lost!!!!!");
+		}else if( total === 6 ){
+
+			alert("You Win!!!!!!");
+
+		}	
+
+		// __________________________________________
+		
 		}
 
 		primera=true;
