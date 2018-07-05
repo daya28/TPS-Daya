@@ -54,4 +54,9 @@ form select{
 	width: 20%;
 	height: auto;
 	padding: 5px;
+	flex-wrap: wrap;
+}
+
+h1{
+	color: white;
 }

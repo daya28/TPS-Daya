@@ -7,7 +7,6 @@
 	<title>TP5 DAYA</title>
 </head>
 <body>
-
 	<div id="contenedor">
 		<div class="rutas">
 			<a href="Home"><p>Home</p></a>
@@ -15,37 +14,41 @@
 			<a href="Todas"><p>Todas</p></a>
 		</div>
 		<div class="seleccionar">
-			<form>
-				<select name="razas" id="razas" placeholder="Selecciona la raza">
-						<option>Selecciona una raza</option>
-						<option>Airedale</option>
-						<option>Akita</option>
-						<option>Bulldog</option>
-						<option>Chihuahua</option>
-						<option>Chow Chow</option>
-						<option>Doberman</option>
-						<option>Escoces</option>
-						<option>Jackrussel</option>
-						<option>Pitbull</option>
-						<option>Pomeranian</option>
-						<option>White Terrier</option>
-						<option>Yorkshire Terrier</option>
+			<form id="cargardatos" action="/" method="post">
+				<h1>Introduce los datos para buscar el perrito ideal para ti!</h1>
+				<select name="razas">
+						<option val="seleccionar">Selecciona una raza</option>
+						<option val="airedale">Airedale</option>
+						<option val="akita">Akita</option>
+						<option val="bulldog">Bulldog</option>
+						<option val="chihuahua">Chihuahua</option>
+						<option val="chowchow">Chow Chow</option>
+						<option val="doberman">Doberman</option>
+						<option val="escoces">Escoces</option>
+						<option val="jackrussel">Jackrussel</option>
+						<option val="pitbull">Pitbull</option>
+						<option val="pomeranian">Pomeranian</option>
+						<option val="whiteterrier">White Terrier</option>
+						<option val="yorkshire">Yorkshire Terrier</option>
 				</select>
-				<select name="tamano" id="tamano" placeholder="Selecciona el tamano">
-						<option>Selecciona el tamano</option>
-						<option>Pequeno</option>
-						<option>Mediano</option>
-						<option>Grande</option>
+				<select name="tamano">
+						<option val="seleccionar">Selecciona el tamano</option>
+						<option val="pequeno">Pequeno</option>
+						<option val="mediano">Mediano</option>
+						<option val="grande">Grande</option>
 				</select>
-				<select name="edad" id="edad" placeholder="Selecciona la edad">
-						<option>Selecciona la edad</option>
-						<option>Cachorro</option>
-						<option>Adulto</option>
+				<select name="edad">
+						<option val="seleccionar">Selecciona la edad</option>
+						<option val="cachorro">Cachorro</option>
+						<option val="adulto">Adulto</option>
 				</select>
 			</form>
 		</div>
 
-		<!-- Coloco todas las cajitas de perros con su descripcion -->
+		</body>
+</html>
+
+		<!-- Coloco todas las cajitas de perros con su descripcion en caso de HTML plano
 
 		<div class="section">
 			<div class="cajaperro">
@@ -343,7 +346,5 @@
 	</div>
 	
 
-	<!-- <script type="text/javascript" src="javascripts/jquery.js"></script>
+	<script type="text/javascript" src="javascripts/jquery.js"></script>
 	<script type="text/javascript" src="javascripts/index.js"></script> -->
-</body>
-</html>

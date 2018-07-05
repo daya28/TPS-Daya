@@ -1,7 +1,42 @@
 doctype html
-html
-  head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
-  body
+head
+  title= title
+  link(rel='stylesheet' href='stylesheets/style.css')
+body
+#contenedor
+  .rutas
+    a(href='Home')
+      p Home
+    a(href='Razas')
+      p Razas
+    a(href='Todas')
+      p Todas
+  .seleccionar
+    form#cargardatos(action='/' method='post')
+      h1 Introduce los datos para buscar el perrito ideal para ti!
+      select(name='razas')
+        option(val='seleccionar') Selecciona una raza
+        option(val='airedale') Airedale
+        option(val='akita') Akita
+        option(val='bulldog') Bulldog
+        option(val='chihuahua') Chihuahua
+        option(val='chowchow') Chow Chow
+        option(val='doberman') Doberman
+        option(val='escoces') Escoces
+        option(val='jackrussel') Jackrussel
+        option(val='pitbull') Pitbull
+        option(val='pomeranian') Pomeranian
+        option(val='whiteterrier') White Terrier
+        option(val='yorkshire') Yorkshire Terrier
+      select(name='tamano')
+        option(val='seleccionar') Selecciona el tamano
+        option(val='pequeno') Pequeno
+        option(val='mediano') Mediano
+        option(val='grande') Grande
+      select(name='edad')
+        option(val='seleccionar') Selecciona la edad
+        option(val='cachorro') Cachorro
+        option(val='adulto') Adulto
+
+      input(id="keepBtn" type="submit" value="enviar")
     block content
