@@ -1,0 +1,24 @@
+extends layout
+
+block content
+    #perritos
+        a(href='/') Home
+        span > filtrado
+    #filtroPrin
+        h1=title
+        if(filtros.length != 0)
+            .doggies_div
+                for perro in filtrados
+                    .perro 
+                        figure
+                            img(src=perro.img).img
+                        h3.raza=perro.raza
+                        .info
+                            p.tamano=perro.tamano
+                    
+        else
+            .doggies_div
+                h4 No hay coincidencia con tu búsqueda
+
+
+        a(href='/').link Volver al home

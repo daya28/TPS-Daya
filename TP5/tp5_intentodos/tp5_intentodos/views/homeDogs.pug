@@ -1,0 +1,47 @@
+extends layout
+
+block content
+    h1=title
+    .rutas
+        a(href="Home")
+            p Home
+        a(href="Razas")
+            p Razas
+        a(href="Todas")
+            p Todas
+    .seleccionar
+        form#cargardatos(action="/filtrados" method="post")
+            h1 Introduce los datos para buscar el perrito ideal para ti!
+            select#raza(name="raza")
+                option(val="seleccionar") seleccionar
+                option(val="airedale") Airedale
+                option(val="akita") Akita
+                option(val="bulldog") Bulldog
+                option(val="chihuahua") Chihuahua
+                option(val="chowchow") Chow Chow
+                option(val="doberman") Doberman
+                option(val="escoces") Escoces
+                option(val="jackrussel") Jackrussel
+                option(val="pitbull") Pitbull
+                option(val="pomeranian") Pomeranian
+                option(val="whiteterrier") White Terrier
+                option(val="yorkshire") Yorkshire Terrier
+            select#tamano(name="tamano")
+                option(val="seleccionar") seleccionar
+                option(val="pequeno") Pequeno
+                option(val="mediano") Mediano
+                option(val="grande") Grande
+            select#edad(name="edad")
+                option(val="seleccionar") seleccionar
+                option(val="cachorro") Cachorro
+                option(val="adulto") Adulto
+            input#btn-filter(type="submit" value="enviar")
+    .perros
+        for i in doggies
+            .perro
+                figure.fotoPerro
+                    img(src='./'+i.imagen)
+                .infoPerro
+                    p=i.raza
+                    p=i.tamano
+                    p=i.edad
