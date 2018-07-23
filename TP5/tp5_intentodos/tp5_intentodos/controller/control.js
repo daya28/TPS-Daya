@@ -204,24 +204,6 @@ const doggies = [
         res.render('homeDogs', {title: 'Perros', doggies: doggies})
     }
 
-    /**
-     * Hacer el listado de los perritos
-     */
-
-    correr.perrosLista =  function (req, res, next) {   
-        res.render('index', { title: 'Perros', doggies: doggies });
-    }
-
-    /**
-     * Ahora obtengo el id de cada perro 
-     */
-    
-    correr.perroDetallado = function (req, res, next) {
-             
-        let perro = doggies.find(perro => perro.id === req.params.id); 
-
-        res.render('perro', { title: perro.name, perro: perro});
-    } //no me obtiene el perro!!!
 
     /**
      * Función obtener elementos del option
