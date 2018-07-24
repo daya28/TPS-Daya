@@ -1,7 +1,5 @@
 var correr = {}
 
-var filtrado = [];
-
 const doggies = [
     {
         id: "01",
@@ -204,37 +202,59 @@ const doggies = [
         res.render('homeDogs', {title: 'Perros', doggies: doggies})
     }
 
+    /*==============================================================================================*/
 
     /**
      * Función obtener elementos del option
      */
 
     correr.obtenerFiltros = function(raza,tamano,edad){
-
         // si la raza, el tamano y la edad no es igual a "seleccionar" los elementos entonces empiezo a filtrar
+        console.log(doggies);
+
+        var filtrado = [];
 
         if(raza !== "seleccionar" && tamano !== "seleccionar" && edad !== "seleccionar"){
             filtrado = doggies.filter(item => item.raza === raza && item.tamano === tamano && item.edad === edad);
+            console.log('filtrado por 3 parametros :' +filtrado);
+
         }else if(raza !== "seleccionar" && tamano === "seleccionar" && edad !== "seleccionar"){
-            filtrado = doggies.filter(item => item.raza === raza && item.tamano === tamano && item.edad === edad);        
+            filtrado = doggies.filter(item => item.raza === raza && item.edad === edad);
+            console.log('filtrado por raza y por edad :' +filtrado);  
+
         }else if(raza !== "seleccionar" && tamano === "seleccionar" && edad === "seleccionar"){
-            filtrado = doggies.filter(item => item.raza === raza && item.tamano === tamano && item.edad === edad);
+            console.log("raza");
+            filtrado = doggies.filter(item => item.raza === raza);
+            // filtrado = doggies.filter(item =>{if(item.raza == raza.toLowerCase()) return item});
+            //person => { if (person.age > 18) return person}
+            console.log('filtrado por raza :' +filtrado);
+
         }else if(raza !== "seleccionar" && tamano !== "seleccionar" && edad === "seleccionar"){
-            filtrado = doggies.filter(item => item.raza === raza && item.tamano === tamano && item.edad === edad);
+            filtrado = doggies.filter(item => item.raza === raza && item.tamano === tamano);
+            console.log('filtrado por raza y tamano :' +filtrado);
+
         }else if(raza === "seleccionar" && tamano !== "seleccionar" && edad === "seleccionar"){
-            filtrado = doggies.filter(item => item.raza === raza && item.tamano === tamano && item.edad === edad);
+            filtrado = doggies.filter(item => item.tamano === tamano);
+            console.log('filtrado por tamano :' +filtrado);
+
         }else if(raza === "seleccionar" && tamano === "seleccionar" && edad !== "seleccionar"){
-            filtrado = doggies.filter(item => item.raza === raza && item.tamano === tamano && item.edad === edad);
+            filtrado = doggies.filter(item => item.edad === edad);
+            console.log('filtrado por edad :' +filtrado);
+
         }else if(raza === "seleccionar" && tamano !== "seleccionar" && edad !== "seleccionar"){
-            filtrado = doggies.filter(item => item.raza === raza && item.tamano === tamano && item.edad === edad);
-        }else if(raza === "seleccionar" && tamano === "seleccionar" && edad === "seleccionar"){
-            filtrado = doggies.filter(item => item.raza === raza && item.tamano === tamano && item.edad === edad);
+            filtrado = doggies.filter(item => item.tamano === tamano && item.edad === edad);
+            console.log('filtrado por tamano y edad :' +filtrado);
+
+        }else {
+            filtrado = doggies;
         }
 
         console.log('filtrados');
         
         return filtrado;
     }
+
+    /*==============================================================================================*/
 
      /**
      * Función filtrar por característica del perro
@@ -251,15 +271,62 @@ const doggies = [
         let filtros = correr.obtenerFiltros(raza,tamano,edad);
         console.log('filtros', filtros);
 
-        if(filtros === 0){
-            res.render('error');
+        if(filtros.length == 0){
+            res.render('error',{'message':"No hay resultados para su busqueda"});
+        
         }else{
             res.render('filtrados',{
-                title: 'Estamos en filtrados: raza: '+raza+' edad: '+edad+ 'tamano: ' +tamano, 
-                filtros: filtros});
+                'perros': filtros});
             
         }
     }
+
+/*==============================================================================================*/
+
+/**
+ * Función para paginar (dividir las imagenes)
+ */
+
+ var pagina;
+
+ correr.paginas = function (req, res, next){
+
+    if(req.params.pagina){
+        pagina = req.params.pagina;
+    }else{
+        pagina = 1;
+    }
+
+    let cadaPagina = 3;
+
+    let perrosPorPagina = [];
+    // en este arreglo se guardarán la cantidad de perros que se mostraran por página
+
+    for(let i = (parseInt(pagina) - 1) * cadaPagina ; i < ((parseInt(pagina) - 1) * cadaPagina) + cadaPagina ; i++){
+        if (doggies[i]) {
+            perrosPorPagina.push(doggies[i]);
+            // pusheo los doggies por pagina
+        }
+    }
+
+    let totalPaginado = Math.ceil(doggies.length / cadaPagina);
+    let numeroDePagina = 0;
+    let paginas = [];
+
+    while (numeroDePagina < totalPaginado) {
+        numeroDePagina++;
+        paginas.push(numeroDePagina);
+    }
+
+
+ }
+
+ /*==============================================================================================*/
+
+
+
+
+
 
 
     module.exports = correr;

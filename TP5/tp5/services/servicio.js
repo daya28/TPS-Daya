@@ -1,4 +1,4 @@
-todosDogs = {};
+correr = {};
 
 // 
 // el objeto con todos los perros
@@ -172,7 +172,7 @@ let doggies = [
         tamano:"pequeno",
         imagen:"/images/yorkshire_puppy.jpg",
         fav:false,
-    },
+    }]
 
 // 
 // procesar la informacion seleccionada en el form
@@ -202,7 +202,7 @@ function datosForm(breed, age, size){
 		}else{
 			console.log('El array de resultados es...');
             console.log(arrayCoincidencias);
-            return arrayCoincidencias;
+            
 		}
 	}else{
 		console.log('la consulta es comodin');
@@ -216,6 +216,7 @@ function datosForm(breed, age, size){
 				arrayCoincidencias.push(element);
 			}else{
 				console.log('no hay coincidencia');
+
 
 			}
 		}
@@ -234,11 +235,15 @@ function datosForm(breed, age, size){
 
 	}
 
+    return arrayCoincidencias;
+    // se muestra cuando llama al servicio
+
 }
+
 
 // conservamos los datos del form y filtramos de acuerdo al comodin
 
-todosDogs.filtramos = function (req, res, next){
+correr.filtro = function (req, res, next){
 
 	let raza = req.body.raza.toLowerCase();
 	let edad = req.body.edad.toLowerCase();
@@ -248,4 +253,14 @@ todosDogs.filtramos = function (req, res, next){
 	return datosForm(raza, edad, tamano);
 }
 
-module.exports = todosDogs;
+correr.todosdoggies = function(){
+
+    return doggies;
+}
+
+correr.buscardoggies = function(id){
+    let dog = doggies.find(dog => dog.id === id);
+    return doggies;
+}
+
+module.exports = correr;

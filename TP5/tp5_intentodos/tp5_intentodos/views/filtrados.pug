@@ -6,12 +6,12 @@ block content
         span > filtrado
     #filtroPrin
         h1=title
-        if(filtros.length != 0)
+        if(perros.length > 0)
             .doggies_div
-                for perro in filtrados
+                for perro in perros
                     .perro 
                         figure
-                            img(src=perro.img).img
+                            img(src=perro.imagen).img
                         h3.raza=perro.raza
                         .info
                             p.tamano=perro.tamano

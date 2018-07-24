@@ -5,7 +5,7 @@ var control = require('../controller/control');
 /* GET home page. */
 router.get('/', function(req, res, next){res.redirect('/homeDogs')});
 router.get('/homeDogs', control.mostrarPerros);
-
+router.get('/perritos/:pagina', control.paginas);
 
 
 /* posts */
